@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:orientation="horizontal"
+        android:id="@+id/cPreview">
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top|center"
+        android:orientation="horizontal">
+
+        <Button
+            android:textColor="#fff"
+            android:background="#EB0000"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:textSize="15sp"
+            android:text="Live"/>
+        <Button
+            android:drawableLeft="@drawable/viewicon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/viewCounter"
+            android:textSize="15sp"
+            android:text="123"/>
+
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        >
+        <Button
+            android:layout_gravity="center_vertical"
+            android:drawableLeft="@drawable/switchcameraicon"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:id="@+id/btnSwitch"
+            android:layout_marginLeft="0dp"
+            android:textSize="15sp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        >
+
+        <Button
+            android:gravity="bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnCam"
+            android:textSize="15sp"
+            android:text="Take Photo"/>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/animation_holder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+
+
+
+
+</RelativeLayout>
