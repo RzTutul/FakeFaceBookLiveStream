@@ -4,14 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <LinearLayout
+        android:id="@+id/cPreview"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:orientation="horizontal"
-        android:id="@+id/cPreview">
+        android:layout_height="350dp"
+        android:orientation="horizontal">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/cPreview"
+        android:orientation="horizontal">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/commentRV"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
     </LinearLayout>
 
 
@@ -22,55 +36,57 @@
         android:orientation="horizontal">
 
         <Button
-            android:textColor="#fff"
-            android:background="#EB0000"
             android:layout_width="80dp"
-            android:layout_height="40dp"
-            android:textSize="15sp"
-            android:text="Live"/>
+            android:layout_height="35dp"
+            android:background="#EB0000"
+            android:text="Live"
+            android:textColor="#fff"
+            android:textSize="15sp" />
+
         <Button
-            android:drawableLeft="@drawable/viewicon"
+            android:id="@+id/viewCounter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/viewCounter"
-            android:textSize="15sp"
-            android:text="123"/>
-
-
-
-
+            android:alpha="0.55"
+            android:color="#66FF0000"
+            android:drawableLeft="@drawable/viewicon"
+            android:text="123"
+            android:textColor="#111111"
+            android:textSize="15sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="end"
-        >
-        <Button
-            android:layout_gravity="center_vertical"
-            android:drawableLeft="@drawable/switchcameraicon"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+        android:gravity="end">
+        <ImageView
             android:id="@+id/btnSwitch"
-            android:layout_marginLeft="0dp"
-            android:textSize="15sp"
-            />
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:alpha="0.75"
+            android:background="@drawable/button_circle_shape"
+            android:color="#66FF0000"
+            android:gravity="center"
+            android:padding="15dp"
+            android:src="@drawable/switchcameraicon" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="bottom"
-        >
+        android:gravity="bottom">
 
         <Button
-            android:gravity="bottom"
+            android:visibility="gone"
+            android:id="@+id/btnCam"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btnCam"
-            android:textSize="15sp"
-            android:text="Take Photo"/>
+            android:gravity="bottom"
+            android:text="Take Photo"
+            android:textSize="15sp" />
 
     </LinearLayout>
 
@@ -78,10 +94,6 @@
         android:id="@+id/animation_holder"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
-
-
-
 
 
 </RelativeLayout>

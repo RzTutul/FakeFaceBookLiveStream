@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="3">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5">
+            <ImageView
+                android:id="@+id/userImageID"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:src="@drawable/rztutul" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/userNameID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rz Tutul"
+                android:textColor="#3F3C3C"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/userComment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ki obsta tmr?" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:gravity="end|center">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/like" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
