@@ -10,16 +10,18 @@
     <LinearLayout
         android:id="@+id/cPreview"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="match_parent"
         android:orientation="horizontal">
 
     </LinearLayout>
 
+
+
     <LinearLayout
+        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/cPreview"
-        android:orientation="horizontal">
+        android:layout_height="250dp"
+        android:orientation="vertical">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/commentRV"

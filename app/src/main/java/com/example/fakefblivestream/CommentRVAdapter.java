@@ -12,20 +12,22 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class CommentRVAdapter extends RecyclerView.Adapter<CommentRVAdapter.CommnetViewHolder> {
+public  class CommentRVAdapter extends RecyclerView.Adapter<CommentRVAdapter.CommnetViewHolder> {
     private Context context;
     private List<CommentPojo> commentPojoList;
+    private int[] userImage;
     View view;
 
 
-    public CommentRVAdapter(Context context, List<CommentPojo> commentPojoList) {
+    public CommentRVAdapter(Context context, List<CommentPojo> commentPojoList,int[] userImage) {
         this.context = context;
         this.commentPojoList = commentPojoList;
+        this.userImage = userImage;
     }
 
     @NonNull
     @Override
-    public CommnetViewHolder onCreateViewHolder(@NonNull final ViewGroup parent, final int viewType) {
+    public CommnetViewHolder onCreateViewHolder(@NonNull  ViewGroup parent,  int viewType) {
 
         LayoutInflater inflater = LayoutInflater.from(context);
         view = inflater.inflate(R.layout.comment_row, parent, false);
@@ -33,10 +35,11 @@ public class CommentRVAdapter extends RecyclerView.Adapter<CommentRVAdapter.Comm
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final CommnetViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull  CommnetViewHolder holder,  int position) {
 
         holder.userName.setText(commentPojoList.get(position).getUserName());
         holder.userComment.setText(commentPojoList.get(position).getUserComment());
+        holder.userImage.setImageResource(userImage[position]);
 
 
     }
@@ -50,7 +53,7 @@ public class CommentRVAdapter extends RecyclerView.Adapter<CommentRVAdapter.Comm
 
     public class CommnetViewHolder extends RecyclerView.ViewHolder {
         TextView userName, userComment;
-        ImageView userImage;
+        ImageView userImage,likebtn;
 
         public CommnetViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -58,6 +61,17 @@ public class CommentRVAdapter extends RecyclerView.Adapter<CommentRVAdapter.Comm
             userName = itemView.findViewById(R.id.userNameID);
             userComment = itemView.findViewById(R.id.userComment);
             userImage = itemView.findViewById(R.id.userImageID);
+            likebtn = itemView.findViewById(R.id.likebtnID);
         }
+
+
     }
+    public void UpdateCommnet(CommentPojo comment)
+    {
+        commentPojoList.add(comment);
+        notifyDataSetChanged();
+    }
+
+
+
 }

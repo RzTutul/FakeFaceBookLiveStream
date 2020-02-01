@@ -1,10 +1,13 @@
 package com.example.fakefblivestream;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
 import android.animation.ValueAnimator;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 
 import android.os.CountDownTimer;
@@ -22,6 +25,7 @@ import android.graphics.BitmapFactory;
 import android.hardware.Camera;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.fakefblivestream.emoji_overly.Direction;
 import com.example.fakefblivestream.emoji_overly.ZeroGravityAnimation;
@@ -31,6 +35,7 @@ import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
+
     private Camera mCamera;
     private CameraPreview mPreview;
     private Camera.PictureCallback mPicture;
@@ -41,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
     private boolean cameraFront = false;
     public static Bitmap bitmap;
     private RecyclerView commentRV;
-    private int progress = 0;
 
     public CommentRVAdapter commentRVAdapter;
 
@@ -51,13 +55,13 @@ public class MainActivity extends AppCompatActivity {
 
         commentPojoList = new ArrayList<>();
         DecelerateInterpolator decelerateInterpolator = new DecelerateInterpolator(0.8f);
-        int start = Math.min(0, 6);
-        int end = Math.max(0, 6);
-        int difference = Math.abs(6 - 0);
+        int start = Math.min(0, 1);
+        int end = Math.max(0, 1);
+        int difference = Math.abs(1 - 0);
         Handler handler = new Handler();
         for (int count = start; count <= end; count++) {
             int time = Math.round(decelerateInterpolator.getInterpolation((((float) count) / difference)) * 10000) * count;
-            final int finalCount = ((0 > 6) ? 0 - count : count);
+            final int finalCount = ((0 > 1) ? 0 - count : count);
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -67,21 +71,6 @@ public class MainActivity extends AppCompatActivity {
                     if (finalCount == 1) {
                         commentPojoList.add(new CommentPojo("null", "Shuvo", "Oi ki obsta?"));
 
-                    }
-                    if (finalCount == 2) {
-                        commentPojoList.add(new CommentPojo("null", "Shahrukh", "Vai koi asen?"));
-                    }
-                    if (finalCount == 3) {
-                        commentPojoList.add(new CommentPojo("null", "Shina", "vai apni koi asen amak ekta call den urgent "));
-                    }
-                    if (finalCount == 4) {
-                        commentPojoList.add(new CommentPojo("null", "SB Tinu", "Sina Amak Rate call diba"));
-                    }
-                    if (finalCount == 5) {
-                        commentPojoList.add(new CommentPojo("null", "Antora ", "Tui jodi oka call dis tor kobor ase"));
-                    }
-                    if (finalCount == 6) {
-                        commentPojoList.add(new CommentPojo("null", "Mamud", "Yoyo bro"));
                     }
 
 
@@ -97,19 +86,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
 
+
+
         viewCounter = findViewById(R.id.viewCounter);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
 
+        int [] userImage = new int[]{R.drawable.hahaemoji, R.drawable.angryface,R.drawable.rztutul,R.drawable.like,R.drawable.love,R.drawable.sademoji};
+
         startCountAnimation();
         //For Emoji
-        emoji_one();
-        emoji_two();
-        emoji_three();
+        emoji_haha();
+        emoji_haha();
         myContext = this;
 
         mCamera = Camera.open();
-        mCamera.setDisplayOrientation(90);
+        mCamera.setDisplayOrientation(90);//90
         cameraPreview = (LinearLayout) findViewById(R.id.cPreview);
         mPreview = new CameraPreview(myContext, mCamera);
         cameraPreview.addView(mPreview);
@@ -144,15 +136,72 @@ public class MainActivity extends AppCompatActivity {
         });
 
         mCamera.startPreview();
-    }
 
-    public void updateUI() {
+
         commentRV = findViewById(R.id.commentRV);
-        commentRVAdapter = new CommentRVAdapter(MainActivity.this, commentPojoList);
+        commentRVAdapter = new CommentRVAdapter(MainActivity.this, commentPojoList,userImage);
         LinearLayoutManager llm = new LinearLayoutManager(MainActivity.this);
+        //llm.setStackFromEnd(true);
+
+        commentRVAdapter.notifyDataSetChanged();
         commentRV.setLayoutManager(llm);
         commentRV.setAdapter(commentRVAdapter);
 
+        commentRV.post(new Runnable() {
+            @Override
+            public void run() {
+                // Call smooth scroll
+                commentRV.smoothScrollToPosition(commentRVAdapter.getItemCount() - 1);
+            }
+        });
+
+
+
+        DecelerateInterpolator decelerateInterpolator = new DecelerateInterpolator(0.8f);
+        int start = Math.min(0, 6);
+        int end = Math.max(0, 6);
+        int difference = Math.abs(6 - 0);
+        Handler handler = new Handler();
+        for (int count = start; count <= end; count++) {
+            int time = Math.round(decelerateInterpolator.getInterpolation((((float) count) / difference)) * 10000) * count;
+            final int finalCount = ((0 > 6) ? 0 - count : count);
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (finalCount == 0) {
+                        CommentPojo comment = new CommentPojo("null", "Tutul", "Hello how are you");
+                        commentRVAdapter.UpdateCommnet(comment);
+                    }
+                    if (finalCount == 1) {
+                        CommentPojo comment =(new CommentPojo("null", "Shuvo", "Oi ki obsta?"));
+                        commentRVAdapter.UpdateCommnet(comment);
+                    }
+                    if (finalCount == 2) {
+                        CommentPojo comment =(new CommentPojo("null", "Shahrukh", "Vai koi asen?"));
+                        commentRVAdapter.UpdateCommnet(comment);
+                    }
+                    if (finalCount == 3) {
+                        CommentPojo comment =(new CommentPojo("null", "Shina", "vai apni koi asen amak ekta call den urgent "));
+                        commentRVAdapter.UpdateCommnet(comment);
+                    }
+                    if (finalCount == 4) {
+                        CommentPojo comment =(new CommentPojo("null", "SB Tinu", "Sina Amak Rate call diba"));
+                        commentRVAdapter.UpdateCommnet(comment);
+                        commentRVAdapter.UpdateCommnet(comment);
+                    }
+                    if (finalCount == 5) {
+                        CommentPojo comment =(new CommentPojo("null", "Antora ", "Tui jodi oka call dis tor kobor ase"));
+                        commentRVAdapter.UpdateCommnet(comment);
+                    }
+                    if (finalCount == 6) {
+                        CommentPojo comment =(new CommentPojo("null", "Mamud", "Yoyo bro"));
+                        commentRVAdapter.UpdateCommnet(comment);
+                    }
+
+
+                }
+            }, time);
+        }
     }
 
     private void startCountAnimation() {
@@ -182,8 +231,9 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     viewCounter.setText(String.valueOf(finalCount));
-                        updateUI();
-                    emoji_two();
+                    emoji_like();
+                    emoji_haha();
+                    emoji_love();
                 }
             }, time);
         }
@@ -332,15 +382,15 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void emoji_one() {
+    public void emoji_love() {
         // You can change the number of emojis that will be flying on screen
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 1; i++) {
             flyEmoji(R.drawable.love);
         }
     }
     // You can change the number of emojis that will be flying on screen
 
-    public void emoji_two() {
+    public void emoji_sad() {
         for (int i = 0; i < 1; i++) {
             flyEmoji(R.drawable.sademoji);
         }
@@ -348,14 +398,26 @@ public class MainActivity extends AppCompatActivity {
     }
     // You can change the number of emojis that will be flying on screen
 
-    public void emoji_three() {
-        for (int i = 0; i < 3; i++) {
+    public void emoji_haha() {
+        for (int i = 0; i < 1; i++) {
             flyEmoji(R.drawable.hahaemoji);
-            flyEmoji(R.drawable.like);
-            flyEmoji(R.drawable.angryface);
+
 
         }
 
-
     }
+        public void emoji_like() {
+        for (int i = 0; i < 1; i++) {
+            flyEmoji(R.drawable.like);
+
+
+        }
+    }     public void emoji_angry() {
+        for (int i = 0; i < 2; i++) {
+            flyEmoji(R.drawable.angryface);
+
+        }
+    }
+
+
 }
