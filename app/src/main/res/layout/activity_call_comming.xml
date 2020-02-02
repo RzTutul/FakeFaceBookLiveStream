@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+android:orientation="vertical"
+    tools:context=".CallCommingActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/videocallgirl1"
+            />
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_marginTop="80dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/girlsvideocallcircleimage"
+            />
+        <TextView
+            android:layout_below="@id/image"
+            android:id="@+id/nameID"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Jasika Faraxx"
+            android:textColor="#ffff"
+            />
+              <TextView
+            android:layout_below="@id/nameID"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Video calling from Messenger"
+            android:textColor="#ffff"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="25dp"
+            >
+
+            <ImageView
+                android:id="@+id/canclebtn"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="0dp"
+                android:layout_marginBottom="123dp"
+                android:src="@drawable/ic_cancel_black_24dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="-3dp"
+                android:layout_marginBottom="68dp"
+
+                android:text="DECLINE"
+                android:textColor="#ffff"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+  <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            >
+
+            <ImageView
+                android:layout_marginRight="40dp"
+                android:background="@drawable/button_circle_shape"
+                android:id="@+id/cambtn"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="0dp"
+                android:layout_marginBottom="123dp"
+                android:src="@drawable/ic_videocam_black_24dp" />
+
+            <TextView
+                android:layout_marginRight="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="-3dp"
+                android:layout_marginBottom="68dp"
+                android:text="ANSWER"
+                android:textColor="#ffff"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+
+
+    </RelativeLayout>
+
+
+
+
+
+</LinearLayout>

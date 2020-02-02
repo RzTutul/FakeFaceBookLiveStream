@@ -19,7 +19,7 @@ public  class CommentRVAdapter extends RecyclerView.Adapter<CommentRVAdapter.Com
     View view;
 
 
-    public CommentRVAdapter(Context context, List<CommentPojo> commentPojoList,int[] userImage) {
+    public CommentRVAdapter(Context context, List<CommentPojo> commentPojoList) {
         this.context = context;
         this.commentPojoList = commentPojoList;
         this.userImage = userImage;
@@ -39,7 +39,7 @@ public  class CommentRVAdapter extends RecyclerView.Adapter<CommentRVAdapter.Com
 
         holder.userName.setText(commentPojoList.get(position).getUserName());
         holder.userComment.setText(commentPojoList.get(position).getUserComment());
-        holder.userImage.setImageResource(userImage[position]);
+        holder.userImage.setImageResource(commentPojoList.get(position).getImagePath());
 
 
     }
@@ -57,7 +57,6 @@ public  class CommentRVAdapter extends RecyclerView.Adapter<CommentRVAdapter.Com
 
         public CommnetViewHolder(@NonNull View itemView) {
             super(itemView);
-
             userName = itemView.findViewById(R.id.userNameID);
             userComment = itemView.findViewById(R.id.userComment);
             userImage = itemView.findViewById(R.id.userImageID);

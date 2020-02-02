@@ -5,9 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.Manifest;
-import android.animation.ValueAnimator;
-import android.content.pm.PackageManager;
+
 import android.os.Bundle;
 
 import android.os.CountDownTimer;
@@ -48,7 +46,13 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView commentRV;
 
     public CommentRVAdapter commentRVAdapter;
+    String [] girlsName;
+    String [] girlsComment;
+    String [] boysName;
+    String [] boysComment;
 
+    int [] userImage;
+    int [] usermaleImage;
     public static List<CommentPojo> commentPojoList;
 
     static {
@@ -66,13 +70,8 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     if (finalCount == 0) {
-                        commentPojoList.add(new CommentPojo("null", "Rz Tutul", "Hello how are you"));
+                      //  commentPojoList.add(new CommentPojo("null", "Sokina Akter", "Hello how are you"));
                     }
-                    if (finalCount == 1) {
-                        commentPojoList.add(new CommentPojo("null", "Shuvo", "Oi ki obsta?"));
-
-                    }
-
 
                 }
             }, time);
@@ -87,21 +86,36 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
 
-
         viewCounter = findViewById(R.id.viewCounter);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
 
-        int [] userImage = new int[]{R.drawable.hahaemoji, R.drawable.angryface,R.drawable.rztutul,R.drawable.like,R.drawable.love,R.drawable.sademoji};
+         userImage = new int[]{ R.drawable.f_user1,R.drawable.f_user2,
+                R.drawable.f_user3,R.drawable.f_user4,R.drawable.f_user5,R.drawable.f_user6,R.drawable.f_user7,
+                R.drawable.f_user8,R.drawable.f_user9,R.drawable.f_user10
+        };
+
+          usermaleImage = new int[]{R.drawable.m_user1,R.drawable.m_user2,
+                R.drawable.m_user3,R.drawable.m_user4,R.drawable.m_user5,R.drawable.m_user6,R.drawable.m_user7,
+                R.drawable.m_user8,R.drawable.m_user9,R.drawable.m_user10
+        };
+
+
+
+         girlsName = getResources().getStringArray(R.array.girlsName);
+         girlsComment = getResources().getStringArray(R.array.girlsCommment);
+         boysName = getResources().getStringArray(R.array.boyName);
+         boysComment = getResources().getStringArray(R.array.boyscomment);
 
         startCountAnimation();
         //For Emoji
         emoji_haha();
         emoji_haha();
-        myContext = this;
 
+
+        myContext = this;
         mCamera = Camera.open();
-        mCamera.setDisplayOrientation(90);//90
+        mCamera.setDisplayOrientation(90);
         cameraPreview = (LinearLayout) findViewById(R.id.cPreview);
         mPreview = new CameraPreview(myContext, mCamera);
         cameraPreview.addView(mPreview);
@@ -139,70 +153,63 @@ public class MainActivity extends AppCompatActivity {
 
 
         commentRV = findViewById(R.id.commentRV);
-        commentRVAdapter = new CommentRVAdapter(MainActivity.this, commentPojoList,userImage);
+        commentRVAdapter = new CommentRVAdapter(MainActivity.this, commentPojoList);
         LinearLayoutManager llm = new LinearLayoutManager(MainActivity.this);
-        //llm.setStackFromEnd(true);
-
+        llm.setStackFromEnd(true);
         commentRVAdapter.notifyDataSetChanged();
         commentRV.setLayoutManager(llm);
         commentRV.setAdapter(commentRVAdapter);
 
-        commentRV.post(new Runnable() {
-            @Override
-            public void run() {
-                // Call smooth scroll
-                commentRV.smoothScrollToPosition(commentRVAdapter.getItemCount() - 1);
-            }
-        });
 
 
 
         DecelerateInterpolator decelerateInterpolator = new DecelerateInterpolator(0.8f);
-        int start = Math.min(0, 6);
-        int end = Math.max(0, 6);
-        int difference = Math.abs(6 - 0);
+        final int start = Math.min(0, 9);
+        int end = Math.max(0, 9);
+        int difference = Math.abs(9 - 0);
         Handler handler = new Handler();
+
         for (int count = start; count <= end; count++) {
-            int time = Math.round(decelerateInterpolator.getInterpolation((((float) count) / difference)) * 10000) * count;
-            final int finalCount = ((0 > 6) ? 0 - count : count);
+            int time = Math.round(decelerateInterpolator.getInterpolation((((float) count) / difference)) * 40000) * count;
+            final int finalCount = ((0 > 9) ? 0 - count : count);
+            final int finalCount1 = count;
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    if (finalCount == 0) {
-                        CommentPojo comment = new CommentPojo("null", "Tutul", "Hello how are you");
-                        commentRVAdapter.UpdateCommnet(comment);
-                    }
-                    if (finalCount == 1) {
-                        CommentPojo comment =(new CommentPojo("null", "Shuvo", "Oi ki obsta?"));
-                        commentRVAdapter.UpdateCommnet(comment);
-                    }
-                    if (finalCount == 2) {
-                        CommentPojo comment =(new CommentPojo("null", "Shahrukh", "Vai koi asen?"));
-                        commentRVAdapter.UpdateCommnet(comment);
-                    }
-                    if (finalCount == 3) {
-                        CommentPojo comment =(new CommentPojo("null", "Shina", "vai apni koi asen amak ekta call den urgent "));
-                        commentRVAdapter.UpdateCommnet(comment);
-                    }
-                    if (finalCount == 4) {
-                        CommentPojo comment =(new CommentPojo("null", "SB Tinu", "Sina Amak Rate call diba"));
-                        commentRVAdapter.UpdateCommnet(comment);
-                        commentRVAdapter.UpdateCommnet(comment);
-                    }
-                    if (finalCount == 5) {
-                        CommentPojo comment =(new CommentPojo("null", "Antora ", "Tui jodi oka call dis tor kobor ase"));
-                        commentRVAdapter.UpdateCommnet(comment);
-                    }
-                    if (finalCount == 6) {
-                        CommentPojo comment =(new CommentPojo("null", "Mamud", "Yoyo bro"));
-                        commentRVAdapter.UpdateCommnet(comment);
-                    }
-
-
+                    CommentPojo comment = new CommentPojo(userImage[finalCount1],girlsName[finalCount1], girlsComment[finalCount1]);
+                    commentRVAdapter.UpdateCommnet(comment);
+                    commentRV.smoothScrollToPosition(finalCount1);
+                    commentRV.smoothScrollToPosition(commentRV.getBottom());
                 }
             }, time);
+
         }
+
+           DecelerateInterpolator decelerateInterpolator1 = new DecelerateInterpolator(0.8f);
+        final int start1 = Math.min(0, 9);
+        int end1= Math.max(0, 9);
+        int difference1 = Math.abs(9 - 0);
+        Handler handler1 = new Handler();
+
+        for (int count = start1; count <= end1; count++) {
+            int time = Math.round(decelerateInterpolator1.getInterpolation((((float) count) / difference1)) * 20000) * count;
+            final int finalCount = ((0 > 9) ? 0 - count : count);
+            final int finalCount1 = count;
+            handler1.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    CommentPojo comment = new CommentPojo(usermaleImage[finalCount1],boysName[finalCount1], boysComment[finalCount1]);
+                    commentRVAdapter.UpdateCommnet(comment);
+                    commentRV.smoothScrollToPosition(finalCount1);
+                    commentRV.smoothScrollToPosition(commentRV.getBottom());
+                }
+            }, time);
+
+        }
+
+
     }
+
 
     private void startCountAnimation() {
         ///Count 0 to 150 in 5sec

@@ -2,7 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_gravity="top|left"
+    tools:context=".Main2Activity"
     android:orientation="vertical">
 
 
@@ -11,4 +13,46 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="GOToLive" />
+
+  <Button
+        android:id="@+id/gotoVideoCall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="VideoCall" />
+
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        >
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="Recording Status: "
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+        <ToggleButton
+            android:id="@+id/toggle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:text="Start"/>
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_below="@+id/toggle"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="85dp"
+            />
+
+    </RelativeLayout>
 </LinearLayout>

@@ -1,3 +1,58 @@
 <resources>
-    <string name="app_name">FakeFBLiveStream</string>
+    <string name="app_name">  FBLive</string>
+
+    <string-array name="girlsCommment">
+        <item>is Watching.</item>
+        <item>Viya ki obsta?</item>
+        <item>Tumar pase oi ta k</item>
+        <item>Paser ta k ame pic ste dkce</item>
+        <item>Dusto sele er dol</item>
+        <item>Kaj kam na tkle ja hoi</item>
+        <item>Tor ste oi tar name ki</item>
+        <item>Sobai k ekto introduce kore dew</item>
+        <item>Valo asis</item>
+        <item>Tui amak block kore disis keno</item>
+        <item>Cute Babu ta</item>
+    </string-array>
+    <string-array name="girlsName">
+        <item>Sadia Akter Antora</item>
+        <item>Nusrat Nahar</item>
+        <item>Atia Khatun</item>
+        <item>Jesmin Nipa</item>
+        <item>Sumaiya Akter Bithi</item>
+        <item>Raisa Yesmin Jui</item>
+        <item>Sabrina Akter Mim</item>
+        <item>Job Akter</item>
+        <item>Adiba Yesmin Tithi</item>
+        <item>Tinu Khaun </item>
+    </string-array>
+
+    <string-array name="boyName">
+
+        <item>Pintu Hossin</item>
+        <item>AH Shoel</item>
+        <item>Siam Hossian</item>
+        <item>Azizur Rahman</item>
+        <item>Hasnat Abir</item>
+        <item>Hasanur Jaman</item>
+        <item>Mehidi Hasan Shuvo</item>
+        <item>Enamul Hosain</item>
+        <item>Akash Hoissen</item>
+        <item>Sumaon Hosain</item>
+    </string-array>
+
+    <string-array name="boyscomment">
+        <item>is Watching.</item>
+        <item>Viya kmn asen?</item>
+        <item>oi hala tk dis na keno</item>
+        <item>Oi bc live e </item>
+        <item>ki obsta mama?</item>
+        <item>mama koi asis</item>
+        <item>bondu onk din pore</item>
+        <item>dsto ekta call dis</item>
+        <item>ki kobor re</item>
+        <item>Hello Vai</item>
+        <item>Haha LoL:</item>
+    </string-array>
+
 </resources>

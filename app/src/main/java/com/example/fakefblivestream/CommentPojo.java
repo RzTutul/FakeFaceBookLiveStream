@@ -1,22 +1,22 @@
 package com.example.fakefblivestream;
 
 public class CommentPojo {
-    private String imagePath;
+    private int imagePath;
     private String userName;
     private String userComment;
 
 
-    public CommentPojo(String imagePath, String userName, String userComment) {
+    public CommentPojo(int imagePath, String userName, String userComment) {
         this.imagePath = imagePath;
         this.userName = userName;
         this.userComment = userComment;
     }
 
-    public String getImagePath() {
+    public int getImagePath() {
         return imagePath;
     }
 
-    public void setImagePath(String imagePath) {
+    public void setImagePath(int imagePath) {
         this.imagePath = imagePath;
     }
 
